@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script src="https://unpkg.com/rxjs@7.8.2/dist/bundles/rxjs.umd.min.js"></script>
+</head>
+<body>
+    <h2>Premi i tasti A, B o C e se digito X vado in errore (si ferma dopo 5 ripetizioni)</h2>
+
+    <script>
+
+        const { fromEvent, of } = rxjs;
+        const { map, filter, take, catchError } = rxjs.operators;
+
+        const keydown$ = fromEvent(document, 'keydown');
+
+        keydown$.pipe(
+            map(event => {
+                const input = event.key.toUpperCase();
+
+                if(input === 'X')
+                    throw new Error("Tasto X non permesso!")
+
+                return input;
+            }),
+            filter(letter => ['A', 'B', 'C'].includes(letter)),
+            take(5),
+            catchError(error => {
+                console.log('Errore Gestito: ', error.message);
+                return of()                                     //Restituisco lo stream vuoto per il completamento
+            })
+        )
+        .subscribe({
+            next: key => console.log(key),
+            //error: err => console.log("errore in subscribe: ", err),
+            complete: () => console.log("Completato")
+        })
+
+    </script>
+</body>
+</html>

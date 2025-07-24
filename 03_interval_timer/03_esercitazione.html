@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script src="https://unpkg.com/rxjs@7.8.2/dist/bundles/rxjs.umd.min.js"></script>
+</head>
+<body>
+    <h2>Crea un timer che conta fino a 10 secondi e poi si ferma</h2>
+
+    Timer: <span id="secondi">Caricamento...</span>
+
+    <script>
+
+        const { interval, take } = rxjs;
+
+        const stream$ = interval(1000);
+
+        stream$
+        .pipe(
+            take(10)
+        )
+        .subscribe(val => {
+            document.getElementById("secondi").innerText = val + 1;
+        })
+
+    </script>
+</body>
+</html>

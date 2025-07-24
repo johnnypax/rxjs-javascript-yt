@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script src="https://unpkg.com/rxjs@7.8.2/dist/bundles/rxjs.umd.min.js"></script>
+</head>
+<body>
+    <h2>Premi i tasti A, B o C (si ferma dopo 5 ripetizioni)</h2>
+
+    <script>
+
+        const { fromEvent } = rxjs;
+        const { map, filter, take } = rxjs.operators;
+
+        const keydown$ = fromEvent(document, 'keydown');
+
+        keydown$.pipe(
+            map(event => event.key.toUpperCase()),              //1. Trasforma le lettere in maiuscolo
+            filter(letter => ['A', 'B', 'C'].includes(letter)), //2. Filtro solo A, B e C
+            take(5)                                             //3. Limita a 5 ripetizioni
+        )
+        .subscribe({
+            next: key => console.log(key),
+            complete: () => console.log("Hai premuto 5 tasti validi!")
+        })
+
+    </script>
+</body>
+</html>

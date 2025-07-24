@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script src="https://unpkg.com/rxjs@7.8.2/dist/bundles/rxjs.umd.min.js"></script>
+</head>
+<body>
+    <h1>Apri la console di chrome</h1>
+
+    <script>
+        //Esempio observable
+
+        const { Observable } = rxjs;
+
+        const obs$ = new Observable(subscriber => {
+            subscriber.next('Ciao!');
+            subscriber.next('Come va?');
+
+            setTimeout(() => {
+                subscriber.next('Sono arrivato dopo 2 secondi');
+                subscriber.complete();
+                // subscriber.error('errore test')
+            }, 2 * 1000);
+        });
+
+        obs$.subscribe(
+            {
+                next: val => console.log(val),
+                error: err => console.log(`[ERROR] ${err}`),
+                complete: () => console.log(`[COMPLETE] Completato!`)
+            }
+        )
+    </script>
+</body>
+</html>

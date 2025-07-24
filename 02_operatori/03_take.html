@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script src="https://unpkg.com/rxjs@7.8.2/dist/bundles/rxjs.umd.min.js"></script>
+</head>
+<body>
+    <h1>Apri la console di chrome</h1>
+
+    <script>
+
+        const { fromEvent } = rxjs;
+        const { take } = rxjs.operators;
+        
+        const click$ = fromEvent(document, 'click');
+
+        click$.pipe(
+            take(3)
+        ).subscribe(evento => console.log("click limitato: ", evento))
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script src="https://unpkg.com/rxjs@7.8.2/dist/bundles/rxjs.umd.min.js"></script>
+</head>
+<body>
+    <h1>Apri la console di chrome</h1>
+
+    <script>
+
+        const { fromEvent } = rxjs;
+        const { map } = rxjs.operators;
+
+        const click$ = fromEvent(document, 'click');
+
+        click$.pipe(
+            map(evento => evento.clientX)
+        )
+        .subscribe(x => console.log('coordinate X: ', x))
+
+    </script>
+</body>
+</html>

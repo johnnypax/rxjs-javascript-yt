@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script src="https://unpkg.com/rxjs@7.8.2/dist/bundles/rxjs.umd.min.js"></script>
+</head>
+<body>
+    <h2>Apri la console del Browser</h2>
+
+    <script>
+        /* Timer semplice
+        const { timer } = rxjs;
+
+        const stream$ = timer(3 * 1000);
+
+        stream$.subscribe(val => {
+            console.log("Sono passati 3 secondi");            
+        })
+        */
+
+        const { timer } = rxjs;
+
+        timer(3000, 1000).subscribe(val => {
+            console.log("Parto dopo 3 secondi e poi ogni 1 secondo", val);            
+        })
+    </script>
+</body>
+</html>

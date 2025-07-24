@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script src="https://unpkg.com/rxjs@7.8.2/dist/bundles/rxjs.umd.min.js"></script>
+</head>
+<body>
+    <button id="btn">Cliccami</button>
+
+    <script>
+        const { fromEvent } = rxjs;
+
+        const button = document.getElementById('btn');
+
+        const click$ = fromEvent(button, 'click')
+
+        click$.subscribe(event => {
+            // console.log("Hai cliccato sul pulsante!")
+            // console.log(event)
+            console.log("Hai cliccato sulle coordinate: ", event.clientX, event.clientY)
+        })
+    </script>
+</body>
+</html>

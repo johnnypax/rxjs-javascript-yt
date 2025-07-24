@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script src="https://unpkg.com/rxjs@7.8.2/dist/bundles/rxjs.umd.min.js"></script>
+</head>
+<body>
+    <input type="text" id="input-testo" placeholder="Scrivi qualcosa..." />
+    <button id="btn">Invia</button>
+
+    <script>
+        const { fromEvent } = rxjs;
+
+        const text = document.getElementById("input-testo");
+        const input$ = fromEvent(text, 'input')
+
+        const button = document.getElementById("btn");
+        const button$ = fromEvent(button, 'click')
+
+        let contenuto = "";
+
+        input$.subscribe(event => {
+            // console.log(event.target.value)
+            contenuto = event.target.value;
+        })
+
+        button$.subscribe(event => {
+            alert(contenuto)
+        })
+    </script>
+</body>
+</html>

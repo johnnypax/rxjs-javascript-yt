@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script src="https://unpkg.com/rxjs@7.8.2/dist/bundles/rxjs.umd.min.js"></script>
+</head>
+<body>
+    <h2>Apri la console del Browser</h2>
+
+    <script>
+        const { Subject } = rxjs;
+
+        const subject = new Subject();
+
+        subject.subscribe(val => console.log("Subscriber 1", val))
+        subject.subscribe(val => console.log("Subscriber 2", val))
+
+        subject.next("Ciao Giovanni")
+
+    </script>
+</body>
+</html>

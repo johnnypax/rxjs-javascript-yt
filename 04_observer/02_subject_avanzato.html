@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script src="https://unpkg.com/rxjs@7.8.2/dist/bundles/rxjs.umd.min.js"></script>
+</head>
+<body>
+    <h2>Apri la console del Browser</h2>
+
+    <script>
+        const { Subject } = rxjs;
+
+        const subject = new Subject();
+
+        subject.subscribe({
+            next: val => console.log("Subscriber 1 NEXT", val),
+            error:  err => console.log("Subscriber 1 ERROR", err),
+            complete: () => console.log("Subscriber 1 COMPLETE"),
+        })
+        subject.subscribe({
+            next: val => console.log("Subscriber 2 NEXT", val),
+            error:  err => console.log("Subscriber 2 ERROR", err),
+            complete: () => console.log("Subscriber 2 COMPLETE"),
+        })
+
+        //Invio di un mesaggio
+        subject.next("Ciao Giovanni")
+        subject.next("Ciao Valeria")
+
+        //Invio di un errore
+        // subject.error("Errore personalizzato")
+
+        //Completamento
+        subject.complete();
+
+        //Lo stream di dati è completato, l'observer non è in ascolto
+        subject.next("Ciao Mario")
+
+    </script>
+</body>
+</html>
