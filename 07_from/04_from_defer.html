@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script src="https://unpkg.com/rxjs@7.8.2/dist/bundles/rxjs.umd.min.js"></script>
+</head>
+
+<body>
+    <h2>Apri la console del Browser</h2>
+    <button type="button" id="carica">Carica dati</button>
+    <pre id="output"></pre>
+
+    <script>
+
+        const { from, switchMap, defer } = rxjs;
+
+        document.getElementById("carica").addEventListener('click', () => {
+            const api$ = defer(() =>
+                from(fetch("https://jsonplaceholder.typicode.com/posts/1"))
+                    .pipe(
+                        switchMap(response => response.json())
+                    )
+            )
+
+            api$.subscribe(data => {
+                document.getElementById("output").innerText = JSON.stringify(data, null, 2)
+            })
+        })
+    </script>
+</body>
+
+</html>

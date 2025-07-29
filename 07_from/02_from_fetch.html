@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script src="https://unpkg.com/rxjs@7.8.2/dist/bundles/rxjs.umd.min.js"></script>
+</head>
+
+<body>
+    <h2>Apri la console del Browser</h2>
+
+    <script>
+
+        const { from } = rxjs;
+
+        const promise = fetch("https://jsonplaceholder.typicode.com/posts/1");
+
+        //Trasformo promise -> observable
+        const obs$ = from(promise);
+
+        obs$.subscribe(response => {
+            console.log("Risposta:", response)
+        })
+
+    </script>
+</body>
+
+</html>

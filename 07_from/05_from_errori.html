@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script src="https://unpkg.com/rxjs@7.8.2/dist/bundles/rxjs.umd.min.js"></script>
+</head>
+
+<body>
+    <h2>Lista di post</h2>
+    <button type="button" id="carica">Carica dati</button>
+    
+    <div id="contenuto"></div>
+
+    <script>
+
+        const { fromEvent, catchError, from, switchMap, defer, of, map } = rxjs;
+
+        //https://jsonplaceholder.typicode.com/posts
+
+
+        const api$ = defer(() => 
+            from(fetch("https://jsonplaceholder.typicode.com/postsX"))
+            .pipe(
+                switchMap(response => {
+                    if(!response.ok){
+                        throw new Error("Errore HTTP: " + response.status)
+                    }
+
+                    return response.json();
+                }),
+                catchError(err => of({
+                    status: "ERROR",
+                    data: err.message
+                })),
+                map(result => {
+                    if(result.status === "ERROR")
+                        return result;
+
+                    return {
+                        status: "SUCCESS",
+                        data: result
+                    }
+                }),
+            )
+        )
+
+        fromEvent(document.getElementById("carica"), 'click').subscribe(() => {
+            
+            api$.subscribe(data => {
+                console.log(data)
+            })
+
+        })
+
+        
+    </script>
+</body>
+
+</html>
