@@ -35,10 +35,17 @@ All'interno troverai:
 | 08  | Esercizi pratici con `map()`, `filter()` e `take()` in JavaScript               | [Guarda](https://youtu.be/_P-2eSqK7AM)     |
 | 09  | Gestione avanzata con `next()`, `complete()` e `catchError()`                   | [Guarda](https://youtu.be/_3k6cr0ngeo)     |
 | 10  | Usare `interval()` e `timer()` per creare flussi temporizzati                   | [Guarda](https://youtu.be/VgxR-mHd0tw)     |
-| 11  | Esercitazione pratica con `timer()` e `take()`                                   | [Guarda](https://youtu.be/SuB4CHXr9ik)     |
+| 11  | Esercitazione pratica con `timer()` e `take()`                                  | [Guarda](https://youtu.be/SuB4CHXr9ik)     |
 | 12  | Gestire timer multipli con `switchMap()` in JavaScript                          | [Guarda](https://youtu.be/lctQNvQDkJs)     |
 | 13  | Come usare `unsubscribe()` con `interval()` e eventi temporizzati               | [Guarda](https://youtu.be/gOAqXzR6eaE)     |
 | 14  | Controllare manualmente un Observable con `Subject` in JavaScript               | [Guarda](https://youtu.be/JAP2OP1RrhE)     |
+| 15  | Creare Observable con `of()` – Creation Operator in JavaScript                  | [Guarda](https://youtu.be/KUCB2iE1brE)     |
+| 16  | Creare valori al momento della `subscribe()` con `defer()` e `of()`             | [Guarda](https://youtu.be/uS_oNmdOTfk)     |
+| 17  | Convertire una Promise in Observable con `from()` in JavaScript                 | [Guarda](https://youtu.be/yotq-6n2HKI)     |
+| 18  | Decodificare il body JSON di una GET REST con `switchMap()`                     | [Guarda](https://youtu.be/RXOG8DusaME)     |
+| 19  | REST API su click con `defer()`, `from()`, `fetch()` e `switchMap()`            | [Guarda](https://youtu.be/myKN4Y9Oq5M)     |
+| 20  | Chiamata di una REST API con gestione degli errori con `catchError()`           | [Guarda](https://youtu.be/ntz19mM67y4)     |
+| 21  | Tre modi per uniformare le risposte JSON di una REST API                        | [Guarda](https://youtu.be/9sKdGq237Qo)     |
 
 ---
 
